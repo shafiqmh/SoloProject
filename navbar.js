@@ -1,12 +1,12 @@
 
 function handleClickIndex() {
-    location.href = 'index.html';
+    location.href = "index.html";
 }
 
 function handleClickTeams() {
-    location.href = 'teams.html';
+    location.href = "teams.html";
 }
 
 function handleClickLeagues() {
-    location.href = 'leagues.html';
+    location.href = "leagues.html";
 }
