@@ -6,11 +6,11 @@ const teamURL = "http://localhost:9010/teams";
 
 
 
-function makeRequest(requestType, url, whatToSend) {
+function makeRequest(requestType, url, whatToSend, header) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-            if (xhr.status == 200) {
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
                 const data = JSON.parse(xhr.response);
                 resolve(data);
             } else {
@@ -19,7 +19,11 @@ function makeRequest(requestType, url, whatToSend) {
             }
         };
         xhr.open(requestType, url);
+        if (requestType == 'POST') {xhr.setRequestHeader('Content-Type', 'application/json')};
         xhr.send(whatToSend);
+    })
+    .catch(error => {
+        console.log(error);
     });
 }
 

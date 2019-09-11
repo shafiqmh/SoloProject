@@ -1,21 +1,4 @@
-// function makeRequest(requestType, url, whatToSend) {
-//     return new Promise((resolve, reject) => {
-//         const xhr = new XMLHttpRequest();
-//         xhr.onload = () => {
-//             if (xhr.status == 200) {
-//                 const data = JSON.parse(xhr.response);
-//                 resolve(xhr.response);
-//             } else {
-//                 const reason = new Error("Rejected");
-//                 reject(reason);
-//             }
-//         };
-//         xhr.open("GET", teamURL);
-//         xhr.send();
-//     });
-// console.log(data);
-// console.log("hidisjd");
-// }
+
 
 makeRequest("GET", teamURL)
     .then(data => {
@@ -52,6 +35,79 @@ makeRequest("GET", teamURL)
     .catch(error => {
         console.log(error);
     });
+
+
+
+
+
+
+function handleAddTeam(formEl) {
+    console.log("Form Submitted");
+
+    const formData = {};
+
+    for (let element of formEl.elements) {
+        if (element.id != "") {
+            formData[element.id] = element.value;
+        }
+    }
+    console.log(JSON.stringify(formData));
+    makeRequest("POST", teamURL, JSON.stringify(formData));
+}
+
+
+// function handleFormSubmit(formEl) {
+
+//     console.log('FORM SUBMITTED');
+
+//     const formData = {};
+//     for (let element of formEl.elements) {
+//         // console.log(element.value)
+//         if (element.id != "") {
+//             formData[element.id] = element.value;
+//         }
+//     }
+
+//     const xhr = new XMLHttpRequest();
+//     xhr.onload = () => { /* handle response */ };
+//     xhr.open('POST', 'https://us-central1-qac-sandbox-c347f.cloudfunctions.net/setUser');
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//     xhr.send(JSON.stringify(formData));
+
+//     return false;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function removeAllChildren(id) {
 //     let result = document.getElementById(id);
