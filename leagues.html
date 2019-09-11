@@ -32,40 +32,117 @@
     </nav>
     </div>
 
-    <table class="table">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div class="container">
+        <table id=leaguesTable class="table">
+
+            <thead class="thead-light">
+        </table>
+    </div>
+
+
+
+
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#leagueModal" data-whatever="@createL">Create League</button>
+
+    <div class="modal fade" id="leagueModal" tabindex="-1" role="dialog" aria-labelledby="leagueModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="leagueModalLabel">Add a new league</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="league-name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="team-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="league-foundDate" class="col-form-label">Found Date:</label>
+                            <input type="text" class="form-control" id="league-foundDate"></input>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="team-stadium" class="col-form-label">Stadium:</label>
+                            <input type="text" class="form-control" id="team-stadium"></textarea>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit League</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateLModal" data-whatever="@updateT">Update League</button>
+
+    <div class="modal fade" id="updateLModal" tabindex="-1" role="dialog" aria-labelledby="updateLModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateLModalLabel">Update an existing league</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="league-id" class="col-form-label">ID:</label>
+                            <input type="text" class="form-control" id="league-id">
+                        </div>
+                        <div class="form-group">
+                            <label for="league-name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="league-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="league-foundDate" class="col-form-label">Found Date:</label>
+                            <input type="text" class="form-control" id="league-foundDate"></input>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="team-stadium" class="col-form-label">Stadium:</label>
+                            <input type="text" class="form-control" id="team-stadium"></textarea>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit Team</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     <script src="constants.js"></script>
+    <script src="league.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
