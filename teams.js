@@ -25,7 +25,7 @@ function formToObject(formElement) {
 function postTeam(event) {
     // let data = formToObject(event.target);
     let method = 'POST';
-    let url = 'http://35.246.108.72/teams.html'; //CHANGE THIS URL
+    let url = 'http://35.246.108.72:9010/teams'; //CHANGE THIS URL
     let body = formToObject(event.target);
     console.log(body);
     let callback = displaySubjects;
@@ -97,7 +97,7 @@ function createNewTable(request) {
 
 function displayTeams() {
     let method = "GET";
-    let url = 'http://35.246.108.72/teams.html'; //CHANGE THIS URL
+    let url = 'http://35.246.108.72:9010/teams'; //CHANGE THIS URL
     body = null;
     let callback = createNewTable;
     let headers = {
@@ -107,12 +107,12 @@ function displayTeams() {
 }
 
 
-displaySubjects();
+displayTeams();
 
-function deleteSubject(id) {
+function deleteTeam(id) {
     let method = "DELETE";
-    let url = `http://35.246.108.72/teams.html/${id}`; //CHANGE THIS URL
-    let callback = displaySubjects;
+    let url = `http://35.246.108.72:9010/teams/${id}`; //CHANGE THIS URL
+    let callback = displayTeams;
     let headers = {
         "Content-Type": "application/json"
     }
@@ -124,11 +124,11 @@ function deleteSubject(id) {
 function createForm(id) {
     var form = document.createElement("form");
     form.setAttribute('onsubmit', `return editSubject(event, ${id})`);
-    form.id = "editSub";
-    let exists = document.getElementById("editSub")
+    form.id = "editTeam";
+    let exists = document.getElementById("editTeam")
     console.log(exists)
     if (exists == null) {
-        var firstName = document.createElement("input");
+        var firstName = document.createElement("input"); //edit all this
         firstName.setAttribute('type', "text");
         firstName.setAttribute('name', "firstName");
 
@@ -156,10 +156,10 @@ function createForm(id) {
     }
 }
 
-function editSubject(event, id) {
+function editTeam(event, id) {
     let method = "POST";
-    let url = "http://35.246.108.72/teams.html/"; //CHANGE THIS URL
-    let callback = displaySubjects;
+    let url = "http://35.246.108.72:9010/teams"; //CHANGE THIS URL
+    let callback = displayTeams;
     let headers = {
         "Content-Type": "application/json"
     }
