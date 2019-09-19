@@ -33,19 +33,11 @@
 
     <!-- Table -->
     <div class="container">
-        <table id=teamsTable class="table">
+        <table id="teamsTable" class="table">
 
             <thead class="thead-light">
         </table>
     </div>
-
-
-
-
-
-
-
-
 
     <div class="container">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teamModal" data-whatever="@createT">Create Team</button>
@@ -56,8 +48,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="teamModalLabel">Add a new team</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form>
@@ -89,189 +81,43 @@
 
 
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateTModal" data-whatever="@updateT">Update Team</button>
 
-        <div class="modal fade" id="updateTModal" tabindex="-1" role="dialog" aria-labelledby="updateTModalLabel" aria-hidden="true">
+        <!-- MODAL FOR CREATING USER!-->
+        <div class="modal fade bd-create-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateTModalLabel">Update an existing team</h5>
+                        <h5 class="modal-title" id="createModalLabel">New Post</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form onsubmit="addTeam()">
                             <div class="form-group">
-                                <label for="team-id" class="col-form-label">ID:</label>
-                                <input type="text" class="form-control" id="team-id">
+                                <label for="teamName" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="firstName" required>
                             </div>
                             <div class="form-group">
-                                <label for="team-name" class="col-form-label">Name:</label>
-                                <input type="text" class="form-control" id="team-name">
+                                <label for="teamLocation" class="col-form-label">Location:</label>
+                                <input type="text" class="form-control" id="lastName" required>
                             </div>
+
                             <div class="form-group">
-                                <label for="team-location" class="col-form-label">Location:</label>
-                                <input type="text" class="form-control" id="team-location"></input>
+                                <label for="teamStadium" class="col-form-label">Stadium:</label>
+                                <textarea class="form-control" id="address" address></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="team-stadium" class="col-form-label">Stadium:</label>
-                                <input type="text" class="form-control" id="team-stadium"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="team-stadium" class="col-form-label">Other Information:</label>
-                                <textarea class="form-control" id="team-stadium"></textarea>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <!-- Button to add team -->
+                                <button type="submit" class="btn btn-success">Add Team</button>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="handleAddTeam(this)">Submit Team</button>
-                    </div>
                 </div>
             </div>
         </div>
-
-
-
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteTModal" data-whatever="@deleteT">Delete Team</button>
-
-        <div class="modal fade" id="deleteTModal" tabindex="-1" role="dialog" aria-labelledby="deleteTModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteTModalLabel">Delete an existing team</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="team-id" class="col-form-label">ID:</label>
-                                <input type="text" class="form-control" id="team-id">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Delete Team</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-
-
-
-    <!-- MODAL FOR CREATING USER!-->
-    <div class="modal fade bd-create-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">New Post</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <form onsubmit="addTeam()">
-                        <div class="form-group">
-                            <label for="teamName" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="teamLocation" class="col-form-label">Location:</label>
-                            <input type="text" class="form-control" id="lastName" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="teamStadium" class="col-form-label">Stadium:</label>
-                            <textarea class="form-control" id="address" address></textarea>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <!-- Button to add team -->
-                    <button type="submit" class="btn btn-success">Add Team</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END OF MODAL-->
-
-    </div>
-
-
-    <!-- MODAL FOR CREATING USER!-->
-    <div class="modal fade bd-create-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">New Post</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <form onsubmit="addTeam()">
-                        <div class="form-group">
-                            <label for="teamName" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="teamLocation" class="col-form-label">Location:</label>
-                            <input type="text" class="form-control" id="lastName" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="teamStadium" class="col-form-label">Stadium:</label>
-                            <textarea class="form-control" id="address" address></textarea>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <!-- Button to add team -->
-                    <button type="submit" class="btn btn-success">Add Team</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END OF MODAL-->
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Team</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <div id='tempFormWrapper'>
-                        <form onsubmit="return postTeam(event)">
-                            Team Name:<br>
-                            <input type="text" class="form-control" name="firstName" required> <br> Team Location:
-                            <br>
-                            <input type="text" class="form-control" name="secondName" required><br> Team Stadium:
-                            <br>
-                            <input type="text" class="form-control" name="specialty" required><br>
-                            <input type="submit" value="Submit" required class="btn btn-success btn-lg btn-block">
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+        <!-- END OF MODAL-->
     </div>
 
 

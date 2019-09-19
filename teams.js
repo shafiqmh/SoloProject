@@ -25,7 +25,7 @@ function formToObject(formElement) {
 function postTeam(event) {
     // let data = formToObject(event.target);
     let method = 'POST';
-    let url = 'http://35.246.108.72:9010/teams'; //CHANGE THIS URL
+    let url = 'http://' + location.hostname + ':9010/teams'; //CHANGE THIS URL
     let body = formToObject(event.target);
     console.log(body);
     let callback = displaySubjects;
@@ -79,7 +79,7 @@ function jsonToTableEntry(jsonData) {
 }
 
 
-function createNewTable(request) {
+let createNewTable = function(request) {
     let jsonDataList = JSON.parse(request.response);
     let returned = document.getElementById("returned");
     if (returned) {
@@ -90,20 +90,19 @@ function createNewTable(request) {
     for (let i = 0; i < jsonDataList.length; i++) {
         returned.appendChild(jsonToTableEntry(jsonDataList[i]));
     }
-    document.getElementById('mainTable').appendChild(returned);
+    document.getElementById('teamsTable').appendChild(returned);
 
 }
 
 
 function displayTeams() {
     let method = "GET";
-    let url = 'http://35.246.108.72:9010/teams'; //CHANGE THIS URL
-    body = null;
+    let url = 'http://' + location.hostname + ':9010/teams'; //CHANGE THIS URL
     let callback = createNewTable;
     let headers = {
         "Content-Type": "application/json"
     }
-    httpRequest(method, url, callback, headers, body);
+    httpRequest(method, url, callback, headers);
 }
 
 
@@ -111,7 +110,7 @@ displayTeams();
 
 function deleteTeam(id) {
     let method = "DELETE";
-    let url = `http://35.246.108.72:9010/teams/${id}`; //CHANGE THIS URL
+    let url = 'http://' + location.hostname + `:9010/teams/${id}`; //CHANGE THIS URL
     let callback = displayTeams;
     let headers = {
         "Content-Type": "application/json"
@@ -158,7 +157,7 @@ function createForm(id) {
 
 function editTeam(event, id) {
     let method = "POST";
-    let url = "http://35.246.108.72:9010/teams"; //CHANGE THIS URL
+    let url = "http://" + location.hostname + ":9010/teams"; //CHANGE THIS URL
     let callback = displayTeams;
     let headers = {
         "Content-Type": "application/json"
