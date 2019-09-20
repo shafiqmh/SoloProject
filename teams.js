@@ -28,7 +28,7 @@ function postTeam(event) {
     let url = 'http://' + location.hostname + ':9010/teams'; //CHANGE THIS URL
     let body = formToObject(event.target);
     console.log(body);
-    let callback = displaySubjects;
+    let callback = displayTeams;
     let headers = {
         "Content-Type": "application/json"
     }
@@ -41,7 +41,7 @@ function postTeam(event) {
 function createDeleteButton(id) {
     let button = document.createElement('button');
     button.innerText = "Delete";
-    button.setAttribute("onclick", `deleteSubject(${id})`);
+    button.setAttribute("onclick", `deleteTeam(${id})`);
     button.className = 'btn btn-danger';
     return button;
 }
@@ -69,9 +69,12 @@ function jsonToTableEntry(jsonData) {
 
     editButton = createEditButton(jsonData.id);
     deleteButton = createDeleteButton(jsonData.id);
+    addButton = createAddButton(jsonData.id);
 
     buttontd.appendChild(editButton);
     buttontd.appendChild(deleteButton);
+    buttontd.appendChild(addButton);
+
 
     mytr.appendChild(buttontd)
 
@@ -122,31 +125,31 @@ function deleteTeam(id) {
 
 function createForm(id) {
     var form = document.createElement("form");
-    form.setAttribute('onsubmit', `return editSubject(event, ${id})`);
+    form.setAttribute('onsubmit', `return editTeam(event, ${id})`);
     form.id = "editTeam";
     let exists = document.getElementById("editTeam")
     console.log(exists)
     if (exists == null) {
-        var firstName = document.createElement("input"); //edit all this
-        firstName.setAttribute('type', "text");
-        firstName.setAttribute('name', "firstName");
+        var teamName = document.createElement("input"); //edit all this
+        teamName.setAttribute('type', "text");
+        teamName.setAttribute('name', "firstName");
 
 
-        var secondName = document.createElement("input");
-        secondName.setAttribute('type', "text");
-        secondName.setAttribute('name', "secondName");
+        var teamLocation = document.createElement("input");
+        teamLocation.setAttribute('type', "text");
+        teamLocation.setAttribute('name', "secondName");
 
-        var specialty = document.createElement("input");
-        specialty.setAttribute('type', "text");
-        specialty.setAttribute('name', "specialty");
+        var teamStadium = document.createElement("input");
+        teamStadium.setAttribute('type', "text");
+        teamStadium.setAttribute('name', "specialty");
 
         var submit = document.createElement("input");
         submit.setAttribute('type', "submit");
         submit.setAttribute('value', "Submit");
 
-        form.appendChild(firstName);
-        form.appendChild(secondName);
-        form.appendChild(specialty);
+        form.appendChild(teamName);
+        form.appendChild(teamLocation);
+        form.appendChild(teamStadium);
         form.appendChild(submit);
 
         document.body.appendChild(form);
@@ -167,6 +170,6 @@ function editTeam(event, id) {
     let body = JSON.stringify(tempObject);
     console.log(body);
     httpRequest(method, url, callback, headers, body);
-    document.getElementById('editSub').remove();
+    document.getElementById('editTeam').remove();
     return false;
 }
