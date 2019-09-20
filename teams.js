@@ -22,6 +22,22 @@ function formToObject(formElement) {
     return JSON.stringify(body);
 }
 
+let createNewTable = function(request) {
+    let jsonDataList = JSON.parse(request.response);
+    let returned = document.getElementById("returned");
+    if (returned) {
+        document.getElementById('mainTable').removeChild(returned);
+    }
+    returned = document.createElement('tbody');
+    returned.setAttribute("id", "returned");
+    for (let i = 0; i < jsonDataList.length; i++) {
+        returned.appendChild(jsonToTableEntry(jsonDataList[i]));
+    }
+    document.getElementById('teamsTable').appendChild(returned);
+
+}
+
+
 function postTeam(event) {
     // let data = formToObject(event.target);
     let method = 'POST';
@@ -81,23 +97,6 @@ function jsonToTableEntry(jsonData) {
     return mytr;
 }
 
-
-let createNewTable = function(request) {
-    let jsonDataList = JSON.parse(request.response);
-    let returned = document.getElementById("returned");
-    if (returned) {
-        document.getElementById('mainTable').removeChild(returned);
-    }
-    returned = document.createElement('tbody');
-    returned.setAttribute("id", "returned");
-    for (let i = 0; i < jsonDataList.length; i++) {
-        returned.appendChild(jsonToTableEntry(jsonDataList[i]));
-    }
-    document.getElementById('teamsTable').appendChild(returned);
-
-}
-
-
 function displayTeams() {
     let method = "GET";
     let url = 'http://' + location.hostname + ':9010/teams'; //CHANGE THIS URL
@@ -107,9 +106,8 @@ function displayTeams() {
     }
     httpRequest(method, url, callback, headers);
 }
-
-
 displayTeams();
+
 
 function deleteTeam(id) {
     let method = "DELETE";
